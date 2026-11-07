@@ -5,7 +5,7 @@ spot: Modern kent kimliğiyle öne çıkan Eskişehir'de, hızla artan kentsel d
   ticari alanların yükseldiği bölgelerde denetimsiz bırakılan şantiye alanları
   ve inşaat atıkları, hem kentin estetiğini bozuyor hem de çevre güvenliğini
   tehdit ediyor.
-category: İnşaat ve Yıkıntı atıkları
+category: paper
 image: /fhaber/images/uploads/img_9747.jpg.jpeg
 date: 2026-11-07T15:40:00.000+03:00
 ---
