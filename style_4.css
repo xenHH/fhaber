@@ -56,7 +56,6 @@ background: linear-gradient(135deg, var(--surface) 55%, color-mix(in srgb, var(-
 #pn label { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 5px 0; }
 #pn input { width: 46px; height: 28px; border: 2px solid #fff3; background: none; padding: 0; cursor: pointer; }
 #pn button { margin-top: 10px; width: 100%; background: none; border: 2px solid var(--accent); color: var(--text); padding: 8px; font: 800 11px 'Plus Jakarta Sans'; cursor: pointer; }
-
 /* Detay Sayfası Stilleri */
 .art {
   max-width: 780px; margin: 0 auto; background: var(--surface); 
