@@ -12,7 +12,7 @@
         "allowUmdGlobalAccess": true
     },
     "typeAcquisition": {
-        "enable": true
+    "enable": true
     },
     "exclude": [
         "node_modules",
