@@ -1,0 +1,45 @@
+
+backend:
+  name: turbo-github
+  turbo_site_id: a8069704-9018-4134-bfd2-5f163d46735d
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/fhaber/images/uploads"
+
+collections:
+  - name: "haberler"
+    label: "Haberler"
+    folder: "haberler"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Haber Başlığı"
+        name: "title"
+        widget: "string"
+
+      - label: "Spot"
+        name: "spot"
+        widget: "text"
+
+      - label: "Kategori"
+        name: "category"
+        widget: "select"
+        options:
+          - "Gündem"
+          - "Ekonomi"
+          - "Spor"
+          - "Teknoloji"
+          - "Dünya"
+
+      - label: "Kapak Fotoğrafı"
+        name: "image"
+        widget: "image"
+
+      - label: "Yayın Tarihi"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Haber Metni"
+        name: "body"
+        widget: "markdown"
