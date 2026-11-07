@@ -26,11 +26,13 @@ collections:
         name: "category"
         widget: "select"
         options:
-          - "Gündem"
-          - "Ekonomi"
-          - "Spor"
-          - "Teknoloji"
-          - "Dünya"
+          - "İnşaat ve Yıkıntı atıkları"
+          - "Tekstil Suyu ve Mikroplastikler"
+          - "Elektronik Atıklar"
+          - "Sanayi ve Endüstriyel Atıklar"
+          - "Evsel Atıklar"
+          - "Tehlikeli Atıklar"
+          - "Tıbbi Atıklar"
 
       - label: "Kapak Fotoğrafı"
         name: "image"
