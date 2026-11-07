@@ -155,7 +155,23 @@ async function loadCmsHomepage(){
         if(!match||!window.jsyaml)return null;
         const data=jsyaml.load(match[1])||{};
         const category=String(data.category||'').toLocaleLowerCase('tr-TR');
-        const categoryMap={'gündem':'organic','ekonomi':'metal','spor':'plastic','teknoloji':'glass','dünya':'paper','tıbbi atıklar':'medical','sanayi ve endüstriyel atıklar':'metal'};
+       
+const categoryMap = {
+  'paper': 'paper',
+  'inşaat ve yıkıntı atıkları': 'paper',
+  'plastic': 'plastic',
+  'tekstil suyu ve mikroplastikler': 'plastic',
+  'glass': 'glass',
+  'elektronik atıklar': 'glass',
+  'metal': 'metal',
+  'sanayi ve endüstriyel atıklar': 'metal',
+  'organic': 'organic',
+  'evsel atıklar': 'organic',
+  'hazard': 'hazard',
+  'tehlikeli atıklar': 'hazard',
+  'medical': 'medical',
+  'tıbbi atıklar': 'medical'
+};
         const image=String(data.image||'');
         const img=/^https?:\/\//.test(image)||image.startsWith('/')?image:('/fhaber/'+image.replace(/^\.\//,''));
         return {id:file.name.replace(/\.md$/i,''),t:categoryMap[category]||'organic',h:String(data.title||'Başlıksız Haber'),s:String(data.spot||''),img:image?img:'',text:raw.slice(match[0].length),date:String(data.date||''),category:String(data.category||''),imgs:Array.isArray(data.gallery)?data.gallery:[]};
