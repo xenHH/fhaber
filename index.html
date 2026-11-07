@@ -5,26 +5,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>F Haber | Çevre ve Sürdürülebilirlik</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style_4.css">
+
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+<style>
+/* Logo ve menü düzeni */
+.logo .site-logo {
+  display: block;
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+nav .menu {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .logo .site-logo {
+    width: 55px;
+    height: 55px;
+  }
+}
+</style>
 </head>
+
 <body>
-  
-  <nav>
 
 <div class="wrap">
+
+  <!-- ÜST MENÜ -->
   <nav>
-    <a class="logo" href="index.html">
+
+    <a class="logo" href="index.html" aria-label="F Haber Ana Sayfa">
       <img
-        src="./images/fhaber-logo.svg"
+        src="images/fhaber-logo.svg"
         alt="F Haber Logosu"
-        class="site-logo"
-      >
+        class="site-logo">
     </a>
-
-    <div class="menu">
-
 
     <div class="menu">
       <a href="tv_haberi.html">TV HABERİ</a>
@@ -32,14 +62,19 @@
       <a href="r%C3%B6portaj.html">RÖPORTAJ</a>
       <a href="podcast.html">PODCAST</a>
     </div>
+
   </nav>
 
+  <!-- HABERLER -->
   <main id="app"></main>
+
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="fg">
+
       <div>
         <h5>F HABER</h5>
         <p>Çevre, sıfır atık ve sürdürülebilirlik odaklı haber platformu.</p>
@@ -57,25 +92,31 @@
 
       <div>
         <h5>BİZİ TAKİP EDİN</h5>
+
         <a class="ig"
            href="https://www.instagram.com/fhaber2026?exln=b2tvYTRlbGV6OHJu"
            target="_blank"
            rel="noopener">
+
           <svg viewBox="0 0 24 24"
                fill="none"
                stroke="currentColor"
                stroke-width="2">
             <rect x="3" y="3" width="18" height="18"/>
             <circle cx="12" cy="12" r="4.2"/>
-            <rect x="16.6" y="6.4" width="1.6" height="1.6"
-                  fill="currentColor" stroke="none"/>
+            <rect x="16.6" y="6.4"
+                  width="1.6" height="1.6"
+                  fill="currentColor"
+                  stroke="none"/>
           </svg>
+
           <span>
             @fhaber2026
             <small>Instagram’da takip et →</small>
           </span>
         </a>
       </div>
+
     </div>
 
     <div class="cp">
@@ -105,27 +146,20 @@ const TYPES = {
 const categoryMap = {
   'paper': 'paper',
   'inşaat ve yıkıntı atıkları': 'paper',
-
   'plastic': 'plastic',
   'tekstil suyu ve mikroplastikler': 'plastic',
-
   'glass': 'glass',
   'elektronik atıklar': 'glass',
-
   'metal': 'metal',
   'sanayi ve endüstriyel atıklar': 'metal',
-
   'organic': 'organic',
   'evsel atıklar': 'organic',
-
   'hazard': 'hazard',
   'tehlikeli atıklar': 'hazard',
-
   'medical': 'medical',
   'tıbbi atıklar': 'medical'
 };
 
-// ZİYARETÇİYE GÖSTERİLECEK KATEGORİ İSİMLERİ
 const categoryNames = {
   paper: 'İnşaat ve Yıkıntı Atıkları',
   plastic: 'Tekstil Suyu ve Mikroplastikler',
@@ -136,7 +170,6 @@ const categoryNames = {
   medical: 'Tıbbi Atıklar'
 };
 
-// CMS KATEGORİSİNİ TANIMA
 function getCategoryType(value) {
   const category = String(value || '')
     .toLocaleLowerCase('tr-TR')
@@ -145,7 +178,6 @@ function getCategoryType(value) {
   return categoryMap[category] || 'organic';
 }
 
-// KATEGORİ ADINI TÜRKÇE GÖSTERME
 function getCategoryName(value) {
   const category = String(value || '')
     .toLocaleLowerCase('tr-TR')
@@ -621,7 +653,6 @@ async function loadCmsHomepage() {
             ? image
             : '/fhaber/' + image.replace(/^\.\//, '');
 
-          // HABER BİLGİLERİ
           return {
             id: file.name.replace(/\.md$/i, ''),
             t: categoryType,
@@ -630,14 +661,9 @@ async function loadCmsHomepage() {
             img: image ? img : '',
             text: raw.slice(match[0].length),
             date: String(data.date || ''),
-
-            // DÜZELTİLEN KISIM:
-            // "paper" YERİNE TÜRKÇE AD GÖSTERİLİR
             category: categoryLabel,
-
             section: String(data.section || ''),
             author: String(data.author || ''),
-
             imgs: Array.isArray(data.gallery)
               ? data.gallery
               : []
