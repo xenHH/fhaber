@@ -46,3 +46,5 @@ Eskişehir'deki tesiste bulunan büyük yağ haznesi tam doluluğa ulaştığın
 ![Depolama Tankları](/fhaber/images/uploads/img_2290.jpg)
 
 Akaryakıt firmaları, Türkiye piyasasına sundukları motorinin (mazot) içerisine binde 5 oranında biyodizel harmanlamakla yükümlü. Böylece Eskişehir'de çibörek tavasında ömrünü tamamlayan bir damla yağ, doğru toplama ve dönüştürme zinciri sayesinde hem kentin akarsularını ve altyapısını koruyor hem de araçlarda kullanılan yakıtın bir parçası haline gelerek ekonomiye geri kazandırılıyor.
+
+Melih Ulaş ALTUNÇ
