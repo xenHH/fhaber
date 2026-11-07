@@ -20,14 +20,19 @@ collections:
           - {label: "TV Haberi", value: "tv"}
           - {label: "Röportaj", value: "roportaj"}
           - {label: "Podcast", value: "podcast"}
+     
       - label: "Kategori"
         name: "category"
         widget: "select"
-        options: ["Gündem", "Ekonomi", "Spor", "Teknoloji", "Dünya", "Çevre"]
-      - {label: "Kapak Fotoğrafı", name: "image", widget: "image", required: false}
-      - {label: "Yayın Tarihi", name: "date", widget: "datetime"}
-      - {label: "Yazar", name: "author", widget: "string", required: false}
-      - label: "Haber Galerisi"
+        options:
+          - {label: "İnşaat ve Yıkıntı Atıkları", value: "paper"}
+          - {label: "Tekstil Suyu ve Mikroplastikler", value: "plastic"}
+          - {label: "Elektronik Atıklar", value: "glass"}
+          - {label: "Sanayi ve Endüstriyel Atıklar", value: "metal"}
+          - {label: "Evsel Atıklar", value: "organic"}
+          - {label: "Tehlikeli Atıklar", value: "hazard"}
+          - {label: "Tıbbi Atıklar", value: "medical"}
+
         name: "gallery"
         widget: "list"
         required: false
