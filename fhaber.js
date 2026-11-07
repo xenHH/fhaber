@@ -13,7 +13,6 @@ const TYPES={
 };
 const $=s=>document.querySelector(s);
 const root=document.documentElement;
-
 const esc=s=>String(s??'').replace(
   /[&<>"']/g,
   c=>({
