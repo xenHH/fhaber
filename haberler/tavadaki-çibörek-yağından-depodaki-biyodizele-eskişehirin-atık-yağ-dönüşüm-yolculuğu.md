@@ -9,7 +9,7 @@ spot: Eskişehir'in tescilli lezzeti çiböreğin kızartıldığı tavalarda ö
   dönüşerek Türkiye'deki motorin yakıt standardını besliyor.
 category: Tehlikeli Atıklar
 image: /fhaber/images/uploads/img_2275.jpg
-date: 2026-11-07T14:32:00.000+03:00
+date: 2026-11-07T15:43:00.000+03:00
 ---
 ## Mutfakta Başlayan Sorumluluk:"Çevreye Dökülse Porsuk Çayı Kirlenirdi"
 
