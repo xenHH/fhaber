@@ -11,7 +11,6 @@ const TYPES={
   hazard:['Tehlikeli Atıklar','--hazard'],
   medical:['Tıbbi Atıklar','--medical']
 };
-
 const $=s=>document.querySelector(s);
 const root=document.documentElement;
 
