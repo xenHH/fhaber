@@ -7,7 +7,8 @@ spot: Eskişehir'in tescilli lezzeti çiböreğin kızartıldığı tavalarda ö
   dahil oluyor. Mutfakta başlayan lezzet serüveni; tesisteki süzme ve ergitme
   işlemlerinin ardından İzmir'deki geri dönüşüm rafinerilerinde biyodizele
   dönüşerek Türkiye'deki motorin yakıt standardını besliyor.
-category: Tehlikeli Atıklar
+section: gazete
+category: hazard
 image: /fhaber/images/uploads/img_2275.jpg
 date: 2026-11-07T15:43:00.000+03:00
 ---
