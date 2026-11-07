@@ -1,17 +1,27 @@
+
 backend:
   name: turbo-github
   turbo_site_id: a8069704-9018-4134-bfd2-5f163d46735d
+
 media_folder: "images/uploads"
 public_folder: "/fhaber/images/uploads"
+
 collections:
   - name: "haberler"
     label: "Haberler"
     folder: "haberler"
     create: true
     slug: "{{slug}}"
+
     fields:
-      - {label: "Haber Başlığı", name: "title", widget: "string"}
-      - {label: "Spot", name: "spot", widget: "text"}
+      - label: "Haber Başlığı"
+        name: "title"
+        widget: "string"
+
+      - label: "Spot"
+        name: "spot"
+        widget: "text"
+
       - label: "Yayın Türü"
         name: "section"
         widget: "select"
@@ -20,7 +30,7 @@ collections:
           - {label: "TV Haberi", value: "tv"}
           - {label: "Röportaj", value: "roportaj"}
           - {label: "Podcast", value: "podcast"}
-     
+
       - label: "Kategori"
         name: "category"
         widget: "select"
@@ -33,8 +43,20 @@ collections:
           - {label: "Tehlikeli Atıklar", value: "hazard"}
           - {label: "Tıbbi Atıklar", value: "medical"}
 
+      - label: "Kapak Fotoğrafı"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Fotoğraf Galerisi"
         name: "gallery"
         widget: "list"
         required: false
-        field: {label: "Fotoğraf", name: "image", widget: "image"}
-      - {label: "Haber Metni", name: "body", widget: "markdown"}
+        field:
+          label: "Fotoğraf"
+          name: "image"
+          widget: "image"
+
+      - label: "Haber Metni"
+        name: "body"
+        widget: "markdown"
