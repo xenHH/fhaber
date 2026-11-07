@@ -2,7 +2,6 @@
 backend:
   name: turbo-github
   turbo_site_id: a8069704-9018-4134-bfd2-5f163d46735d
-  branch: main
 
 media_folder: "images/uploads"
 public_folder: "/fhaber/images/uploads"
@@ -12,7 +11,7 @@ collections:
     label: "Haberler"
     folder: "haberler"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - label: "Haber Başlığı"
         name: "title"
@@ -33,7 +32,7 @@ collections:
           - "Evsel Atıklar"
           - "Tehlikeli Atıklar"
           - "Tıbbi Atıklar"
-
+          
       - label: "Kapak Fotoğrafı"
         name: "image"
         widget: "image"
@@ -45,3 +44,5 @@ collections:
       - label: "Haber Metni"
         name: "body"
         widget: "markdown"
+
+  
