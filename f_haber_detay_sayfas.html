@@ -3,15 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>F Haber | Çevre ve Sürdürülebilirlik</title>
+<title>Haber Detayı | F Haber</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style_4.css">
+<style>
+.art{max-width:900px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:14px 0 4px;font:800 12px 'Plus Jakarta Sans';letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.meta span{opacity:.9}
+.art figure{margin:0 0 28px}
+.art figure img{width:100%;display:block;max-height:560px;object-fit:cover;border-left:10px solid var(--c);cursor:zoom-in}
+.art figcaption{font-size:13px;opacity:.7;padding-top:8px;line-height:1.5}
+.gh{margin:40px 0 14px;font:800 12px 'Plus Jakarta Sans';letter-spacing:.2em;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:8px}
+.gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;border-bottom:6px solid var(--c);transition:transform .2s}
+.gallery img:hover{transform:translate(-3px,-3px)}
+.lb{position:fixed;inset:0;z-index:100;background:#000e;display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;border:4px solid #fff}
+.lb button{position:absolute;background:var(--accent);color:#fff;border:0;font:800 18px 'Plus Jakarta Sans';width:48px;height:48px;cursor:pointer}
+.lb .x{top:20px;right:20px}.lb .pv{left:16px;top:50%}.lb .nx{right:16px;top:50%}
+</style>
 </head>
 <body>
 
 <div class="wrap">
-<nav>
-    <a class="logo" href="f_haber_ana_sayfa.html"><b class="ed">F</b><span class="ed">HABER</span></a>
+  <nav>
+    <a class="logo" href="index.html"><b class="ed">F</b><span class="ed">HABER</span></a>
     <div class="menu">
       <a href="tv_haberi.html">TV HABERİ</a>
       <a href="gazete_haberi.html">GAZETE HABERİ</a>
@@ -19,8 +36,11 @@
       <a href="podcast.html">PODCAST</a>
     </div>
   </nav>
-  
-  <main id="app"></main>
+
+  <main>
+    <a href="f_haber_ana_sayfa.html" class="back">← ANA SAYFAYA DÖN</a>
+    <article class="art" id="article-container" style="--c: var(--plastic);"></article>
+  </main>
 </div>
 
 <footer>
@@ -44,72 +64,55 @@
 <button id="tg">RENKLER</button>
 <div id="pn"></div>
 
+<div class="lb" id="lb"><button class="x" aria-label="Kapat">✕</button><button class="pv" aria-label="Önceki">‹</button><img alt=""><button class="nx" aria-label="Sonraki">›</button></div>
+
 <script>
 const TYPES={paper:['İnşaat ve Yıkıntı atıkları','--paper'],plastic:['Tekstil Suyu ve Mikroplastikler','--plastic'],glass:['Elektronik Atıklar','--glass'],metal:['Sanayi ve Endüstriyel Atıklar','--metal'],organic:['Evsel Atıklar','--organic'],hazard:['Tehlikeli Atıklar','--hazard'],medical:['Tıbbi Atıklar','--medical']};
-
-const N=[
-{id:'haber-1', t:'organic', h:'Buraya haber konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'haber-2', t:'plastic', h:'Buraya haber konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'haber-3', t:'hazard', h:'Buraya haber konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'haber-4', t:'metal', h:'Buraya haber konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'haber-5', t:'glass', h:'Buraya haber konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'tv-1', t:'organic', h:'TV Haberi Buraya Konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'tv-2', t:'plastic', h:'TV Haberi Buraya Konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'tv-3', t:'hazard', h:'TV Haberi Buraya Konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'gazete-1', t:'paper', h:'Gazete Haberi Buraya Konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'gazete-2', t:'plastic', h:'Gazete Haberi Buraya Konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'gazete-3', t:'metal', h:'Gazete Haberi Buraya Konacak', s:'Haber özeti buraya eklenecek.', img:'', text:'Haber detayı buraya eklenecek.'},
-{id:'roportaj-1', t:'organic', h:'Röportaj Buraya Konacak', s:'Röportaj özeti buraya eklenecek.', img:'', text:'Röportaj detayı buraya eklenecek.'},
-{id:'roportaj-2', t:'glass', h:'Röportaj Buraya Konacak', s:'Röportaj özeti buraya eklenecek.', img:'', text:'Röportaj detayı buraya eklenecek.'},
-{id:'roportaj-3', t:'medical', h:'Röportaj Buraya Konacak', s:'Röportaj özeti buraya eklenecek.', img:'', text:'Röportaj detayı buraya eklenecek.'},
-{id:'podcast-1', t:'hazard', h:'Podcast Buraya Konacak', s:'Podcast özeti buraya eklenecek.', img:'', text:'Podcast detayı buraya eklenecek.'},
-{id:'podcast-2', t:'paper', h:'Podcast Buraya Konacak', s:'Podcast özeti buraya eklenecek.', img:'', text:'Podcast detayı buraya eklenecek.'},
-{id:'podcast-3', t:'plastic', h:'Podcast Buraya Konacak', s:'Podcast özeti buraya eklenecek.', img:'', text:'Podcast detayı buraya eklenecek.'}
-];
-
 const $=s=>document.querySelector(s),root=document.documentElement;
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---- Haberi oku ---- */
+let n=null;
+try{n=JSON.parse(localStorage.getItem('fh-current-news'))}catch(e){}
+if(!n) n={t:'organic',h:'Buraya haber konacak',s:'Haber özeti buraya eklenecek.',img:'',text:'Haber detayı buraya eklenecek.'};
+
+const type=TYPES[n.t]||TYPES.plastic;
+const art=$('#article-container');
+art.style.setProperty('--c',`var(${type[1]})`);
+document.title=(n.h||'Haber')+' | F Haber';
+
+const paras=(Array.isArray(n.text)?n.text:String(n.text||'').split(/\n+/)).filter(Boolean);
+const gallery=Array.isArray(n.imgs)?n.imgs.filter(Boolean):[];
+const all=[n.img,...gallery].filter(Boolean);
+const meta=[n.date,n.author&&('Yazar: '+n.author)].filter(Boolean);
+
+art.innerHTML=`
+  <span class="tag">${esc(type[0])}</span>
+  ${meta.length?`<div class="meta">${meta.map(m=>`<span>${esc(m)}</span>`).join('')}</div>`:''}
+  <h1 class="ed">${esc(n.h)}</h1>
+  <p class="lead">${esc(n.s)}</p>
+  ${n.img?`<figure><img src="${esc(n.img)}" alt="${esc(n.h)}" data-i="0" onerror="this.closest('figure').remove()">${n.imgCaption?`<figcaption>${esc(n.imgCaption)}</figcaption>`:''}</figure>`:''}
+  ${paras.map(p=>`<p>${esc(p)}</p>`).join('')}
+  ${gallery.length?`<div class="gh">FOTOĞRAF GALERİSİ</div><div class="gallery">${gallery.map((g,i)=>`<img src="${esc(g)}" alt="Fotoğraf ${i+1}" data-i="${n.img?i+1:i}" onerror="this.remove()">`).join('')}</div>`:''}
+`;
+
+/* ---- Fotoğraf büyütme ---- */
+const lb=$('#lb'),lbImg=lb.querySelector('img');let li=0;
+function show(i){li=(i+all.length)%all.length;lbImg.src=all[li];lb.classList.add('open')}
+art.addEventListener('click',e=>{if(e.target.tagName=='IMG'&&e.target.dataset.i!==undefined)show(+e.target.dataset.i)});
+lb.querySelector('.x').onclick=()=>lb.classList.remove('open');
+lb.querySelector('.pv').onclick=e=>{e.stopPropagation();show(li-1)};
+lb.querySelector('.nx').onclick=e=>{e.stopPropagation();show(li+1)};
+lb.onclick=e=>{if(e.target===lb)lb.classList.remove('open')};
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key=='Escape')lb.classList.remove('open');if(e.key=='ArrowLeft')show(li-1);if(e.key=='ArrowRight')show(li+1)});
+
+/* ---- Çöp kutuları ---- */
 const bin=(c,k)=>{const ic=k=='medical'?'<path d="M29 41h6v5h5v6h-5v5h-6v-5h-5v-6h5z" fill="#e11d3c"/>':k=='hazard'?'<rect x="30" y="40" width="4" height="12" fill="#111"/><rect x="30" y="55" width="4" height="4" fill="#111"/>':'<path d="M32 41l9 15H23z" fill="none" stroke="#111" stroke-width="2.4" stroke-linejoin="round"/>';
 return `<svg viewBox="0 0 64 92"><ellipse cx="32" cy="88" rx="26" ry="3" fill="#000" opacity=".4"/><rect x="14" y="7" width="36" height="6" fill="${c}"/><rect x="14" y="7" width="36" height="6" fill="#0005"/><polygon points="9,22 55,22 50,81 14,81" fill="${c}"/><polygon points="34,22 55,22 50,81 34,81" fill="#0003"/><polygon points="9,22 15,22 19,81 14,81" fill="#fff" opacity=".25"/><path d="M22 24l2 56M42 24l-2 56" stroke="#0004" stroke-width="1.5"/><rect x="21" y="35" width="22" height="30" fill="#f4f4f0"/>${ic}<rect x="4" y="12" width="56" height="11" fill="${c}"/><rect x="4" y="12" width="56" height="3" fill="#fff" opacity=".35"/><rect x="4" y="20" width="56" height="3" fill="#000" opacity=".3"/><rect x="21" y="16" width="22" height="3" fill="#000" opacity=".5"/><rect x="12" y="78" width="40" height="4" fill="#000" opacity=".35"/><circle cx="18" cy="84" r="4.5" fill="#111"/><circle cx="18" cy="84" r="1.8" fill="#777"/><circle cx="46" cy="84" r="4.5" fill="#111"/><circle cx="46" cy="84" r="1.8" fill="#777"/></svg>`};
+const h=Object.entries(TYPES).map(([k,v])=>bin(`var(${v[1]})`,k));
+$('#bb').innerHTML=[...h,...h].join('');
 
-function drawBins(){const h=Object.entries(TYPES).map(([k,v])=>bin(`var(${v[1]})`,k));$('#bb').innerHTML=[...h,...h].join('')}
-let heroIndex=0,timer=null;
-
-const card=(n,hero)=>`<div class="card ${hero?'hero':''}" data-id="${n.id}" style="--c:var(${TYPES[n.t][1]})">${hero?'<span class="tag">Manşet Haber</span>':''}${hero && n.img ?`<img src="${n.img}" class="hero-img">`:''}<h3 class="ed">${n.h}</h3><p>${n.s}</p><span class="more">HABERİ OKU →</span></div>`;
-
-function render(){
-  let html=`${card(N[heroIndex],true)}
-            <h2 class="slider-title ed">Tüm Haberler</h2>
-            <div class="news-slider">`;
-  
-  for(let i=0; i<N.length; i++){
-    if(i !== heroIndex) html += card(N[i], false);
-  }
-  
-  html+='</div>';
-  $('#app').innerHTML=html;
-
-  document.querySelectorAll('.card').forEach(cardEl => {
-    cardEl.onclick = () => {
-      const id = cardEl.dataset.id;
-      const selectedNews = N.find(item => item.id === id);
-      localStorage.setItem('fh-current-news', JSON.stringify(selectedNews));
-      window.location.href = 'f_haber_detay_sayfas.html';
-    };
-  });
-}
-
-function startTimer(){
-  clearInterval(timer);
-  timer=setInterval(()=>{
-    // Fare slider'ın üstündeyken manşet değişmesin (kaydırma sıfırlanmasın)
-    if($('.news-slider:hover')) return;
-    let next;
-    do { next=Math.floor(Math.random()*N.length); } while(next===heroIndex);
-    heroIndex=next;
-    render();
-  },5000);
-}
-
+/* ---- Renk paneli (ana sayfayla aynı kayıt) ---- */
 const DEF={'--bg':'#ffffff','--surface':'#eef3f0','--accent':'#0e8a5f','--paper':'#1d6fe0','--plastic':'#f5c400','--glass':'#14a44d','--metal':'#8a949c','--organic':'#8a5a2b','--hazard':'#d9262c','--medical':'#e11d74'};
 const LBL={'--bg':'Arka plan','--surface':'Kart zemini','--accent':'Ana yeşil','--paper':'Kağıt','--plastic':'Plastik','--glass':'Cam','--metal':'Metal','--organic':'Organik','--hazard':'Tehlikeli','--medical':'Tıbbi'};
 let cur={...DEF};try{Object.assign(cur,JSON.parse(localStorage.getItem('fh-c2')||'{}'))}catch(e){}
@@ -117,26 +120,9 @@ function apply(){for(const k in cur)root.style.setProperty(k,cur[k])}
 function panel(){$('#pn').innerHTML=Object.keys(DEF).map(k=>`<label>${LBL[k]}<input type="color" data-k="${k}" value="${cur[k]}"></label>`).join('')+'<button id="rs">SIFIRLA</button>';}
 $('#pn').addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;cur[k]=e.target.value;apply();try{localStorage.setItem('fh-c2',JSON.stringify(cur))}catch(_){}});
 $('#pn').addEventListener('click',e=>{if(e.target.id=='rs'){cur={...DEF};apply();panel();try{localStorage.removeItem('fh-c2')}catch(_){}}});
-
 $('#tg').onclick=()=>$('#pn').classList.toggle('open');
 $('#ft').innerHTML=Object.values(TYPES).map(v=>`<li><span class="sw" style="--c:var(${v[1]})"></span>${v[0]}</li>`).join('');
-// Slider üzerinde fare tekerleği ile yatay kaydırma
-let snapT;
-$('#app').addEventListener('wheel',e=>{
-  const s=e.target.closest('.news-slider');
-  if(!s) return;
-  const max=s.scrollWidth-s.clientWidth;
-  if(max<=0) return;
-  const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
-  // Başta veya sondaysa sayfanın normal kaydırmasına izin ver
-  if((d<0&&s.scrollLeft<=0)||(d>0&&s.scrollLeft>=max-1)) return;
-  e.preventDefault();
-  s.style.scrollSnapType='none';   // kaydırma sırasında snap'i kapat
-  s.scrollLeft+=d;
-  clearTimeout(snapT);
-  snapT=setTimeout(()=>{s.style.scrollSnapType='';},150); // durunca en yakın karta otursun
-},{passive:false});
-apply(); panel(); drawBins(); render(); startTimer();
+apply();panel();
 </script>
 </body>
 </html>
