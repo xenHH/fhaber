@@ -1,7 +1,6 @@
 
 (()=>{
 'use strict';
-
 const TYPES={
   paper:['İnşaat ve Yıkıntı Atıkları','--paper'],
   plastic:['Tekstil Suyu ve Mikroplastikler','--plastic'],
