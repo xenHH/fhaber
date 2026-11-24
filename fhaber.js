@@ -1,6 +1,9 @@
 
 (()=>{
 'use strict';
+
+// ATIK TÜRLERİ
+
 const TYPES={
   paper:['İnşaat ve Yıkıntı Atıkları','--paper'],
   plastic:['Tekstil Suyu ve Mikroplastikler','--plastic'],
@@ -76,6 +79,17 @@ const catType=c=>{
 };
 
 
+// TÜRKÇE KATEGORİ İSİMLERİ
+
+function getCategoryName(value){
+
+  const type=catType(value);
+
+  return TYPES[type][0];
+
+}
+
+
 // GERİ DÖNÜŞÜM KUTULARI
 
 function bin(c,k){
@@ -144,6 +158,7 @@ function setup(){
   let cur={...DEF};
 
   try{
+
     const saved=JSON.parse(
       localStorage.getItem('fh-c2')||'{}'
     );
@@ -270,6 +285,8 @@ async function loadNews(){
 
         const date=data.date?new Date(data.date):null;
 
+        const categoryType=catType(data.category);
+
         return {
 
           id:slug,
@@ -278,7 +295,13 @@ async function loadNews(){
 
           s:String(data.spot||''),
 
-          category:String(data.category||''),
+          // TÜRKÇE KATEGORİ ADI
+
+          category:getCategoryName(data.category),
+
+          // ORİJİNAL CMS KATEGORİ KODU
+
+          categoryCode:categoryType,
 
           section:String(
             data.section||
@@ -287,7 +310,7 @@ async function loadNews(){
             ''
           ),
 
-          t:catType(data.category),
+          t:categoryType,
 
           img:safeUrl(data.image),
 
@@ -342,9 +365,11 @@ function card(n,hero){
   const link='f_haber_detay_sayfas.html?haber='+
     encodeURIComponent(n.id);
 
+  const type=TYPES[n.t]?n.t:catType(n.category);
+
   return `<a class="card ${hero?'hero':''}"
     href="${link}"
-    style="--c:var(${TYPES[n.t][1]})">
+    style="--c:var(${TYPES[type][1]})">
 
     ${hero?'<span class="tag">Manşet Haber</span>':''}
 
@@ -397,16 +422,49 @@ async function listing(page){
 
     if(page!=='home'){
 
+      // YAYIN TÜRLERİ
+
       const names={
-        tv:['tv','tv haberi','televizyon'],
-        gazete:['gazete','gazete haberi'],
-        roportaj:['röportaj','roportaj'],
-        podcast:['podcast']
+
+        tv:[
+          'tv',
+          'tv haberi',
+          'televizyon'
+        ],
+
+        gazete:[
+          'gazete',
+          'gazete haberi'
+        ],
+
+        roportaj:[
+          'röportaj',
+          'roportaj'
+        ],
+
+        // YENİ FOTO-RÖPORTAJ BÖLÜMÜ
+
+        foto_roportaj:[
+          'foto_roportaj',
+          'foto_röportaj',
+          'foto-roportaj',
+          'foto-röportaj',
+          'foto roportaj',
+          'foto röportaj',
+          'fotoröportaj',
+          'fotorop ortaj'.replace(' ',''),
+          'fotoğraf röportajı'
+        ],
+
+        podcast:[
+          'podcast'
+        ]
+
       };
 
       N=all.filter(n=>
         (names[page]||[]).includes(
-          n.section.toLocaleLowerCase('tr-TR')
+          n.section.toLocaleLowerCase('tr-TR').trim()
         )
       );
 
@@ -654,9 +712,19 @@ function renderDetail(n){
 
   const body=String(n.text||n.body||'');
 
+  // KATEGORİ KODUNU TÜRKÇE İSME DÖNÜŞTÜR
+
+  const type=TYPES[n.t]
+    ?n.t
+    :catType(n.categoryCode||n.category);
+
+  const categoryLabel=TYPES[type][0];
+
+  // KATEGORİ RENGİ
+
   art.style.setProperty(
     '--c',
-    `var(${TYPES[n.t]?.[1]||'--organic'})`
+    `var(${TYPES[type][1]})`
   );
 
   document.title=title+' | F Haber';
@@ -677,7 +745,7 @@ function renderDetail(n){
 
     <span class="tag">
 
-      ${esc(n.category||TYPES[n.t]?.[0]||'Haber')}
+      ${esc(categoryLabel)}
 
     </span>
 
