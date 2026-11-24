@@ -29,6 +29,7 @@ collections:
           - {label: "Gazete Haberi", value: "gazete"}
           - {label: "TV Haberi", value: "tv"}
           - {label: "Röportaj", value: "roportaj"}
+          - {label: "Foto-Röportaj", value: "foto_roportaj"}
           - {label: "Podcast", value: "podcast"}
 
       - label: "Kategori"
