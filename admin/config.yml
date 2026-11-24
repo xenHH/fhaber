@@ -57,6 +57,21 @@ collections:
           name: "image"
           widget: "image"
 
+      - label: "Video Dosyası Yükle"
+        name: "video"
+        widget: "file"
+        required: false
+        media_library:
+          config:
+            multiple: false
+        hint: "MP4 formatında video yükleyebilirsiniz."
+
+      - label: "YouTube Video Bağlantısı"
+        name: "youtube"
+        widget: "string"
+        required: false
+        hint: "YouTube video bağlantısını buraya yapıştırınız."
+
       - label: "Haber Metni"
         name: "body"
         widget: "markdown"
