@@ -111,3 +111,41 @@ footer ul { list-style: none; padding: 0; }
     height: 50px;
   }
 }
+
+/* VİDEO OYNATICI TASARIMI */
+.news-video {
+  width: 100%;
+  margin: 25px 0 30px;
+  overflow: hidden;
+  background: #000;
+  border-left: 10px solid var(--c, var(--accent));
+  box-sizing: border-box;
+}
+
+.news-video iframe,
+.news-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  background: #000;
+}
+
+.news-video video {
+  object-fit: contain;
+}
+
+/* MOBİL VİDEO OYNATICI */
+@media (max-width: 640px) {
+  .news-video {
+    margin: 15px 0 20px;
+    border-left-width: 5px;
+  }
+
+  .news-video iframe,
+  .news-video video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
