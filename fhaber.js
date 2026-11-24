@@ -11,8 +11,10 @@ const TYPES={
   hazard:['Tehlikeli Atıklar','--hazard'],
   medical:['Tıbbi Atıklar','--medical']
 };
+
 const $=s=>document.querySelector(s);
 const root=document.documentElement;
+
 const esc=s=>String(s??'').replace(
   /[&<>"']/g,
   c=>({
@@ -42,7 +44,9 @@ const safeUrl=v=>{
   return v.replace(/^\.\//,'');
 };
 
+
 // KATEGORİ VE RENK EŞLEŞTİRMESİ
+
 const catType=c=>{
   const s=String(c||'')
     .toLocaleLowerCase('tr-TR')
@@ -72,13 +76,12 @@ const catType=c=>{
   return 'organic';
 };
 
+
 // GERİ DÖNÜŞÜM KUTULARI
+
 function bin(c,k){
-  const ic=k==='medical'
-    ?'<path d="M29 41h6v5h5v6h-5v5h-6v-5h-5v-6h5z" fill="#e11d3c"/>'
-    :k==='hazard'
-    ?'<rect x="30" y="40" width="4" height="12" fill="#111"/>'
-    :'<path d="M32 41l9 15H23z" fill="none" stroke="#111" stroke-width="2.4"/>';
+
+  const ic='<text x="32" y="51" text-anchor="middle" dominant-baseline="middle" font-size="22" font-family="Arial, sans-serif" fill="#16803c">♻︎</text>';
 
   return `<svg viewBox="0 0 64 92" aria-hidden="true">
     <ellipse cx="32" cy="88" rx="26" ry="3" fill="#000" opacity=".4"/>
@@ -93,8 +96,11 @@ function bin(c,k){
   </svg>`;
 }
 
+
 // SİTE RENKLERİ VE AYARLAR
+
 function setup(){
+
   if($('#bb')){
     $('#bb').innerHTML=Object.entries(TYPES)
       .map(([k,v])=>bin(`var(${v[1]})`,k))
@@ -147,6 +153,7 @@ function setup(){
       if(/^#[0-9a-f]{6}$/i.test(saved[k]))
         cur[k]=saved[k];
     }
+
   }catch(e){}
 
   const apply=()=>{
@@ -164,17 +171,20 @@ function setup(){
   };
 
   if($('#pn')&&$('#tg')){
+
     panel();
 
     $('#tg').onclick=()=>
       $('#pn').classList.toggle('open');
 
     $('#pn').addEventListener('input',e=>{
+
       const k=e.target.dataset.k;
 
       if(!Object.hasOwn(DEF,k))return;
 
       cur[k]=e.target.value;
+
       apply();
 
       try{
@@ -183,29 +193,40 @@ function setup(){
           JSON.stringify(cur)
         );
       }catch(_){}
+
     });
 
     $('#pn').addEventListener('click',e=>{
+
       if(e.target.id==='rs'){
+
         cur={...DEF};
+
         apply();
         panel();
 
         try{
           localStorage.removeItem('fh-c2');
         }catch(_){}
+
       }
+
     });
+
   }
 
   apply();
+
 }
 
+
 // GITHUB HABER VERİLERİ
+
 const api=
 'https://api.github.com/repos/xenHH/fhaber/contents/haberler?ref=main';
 
 async function loadNews(){
+
   const r=await fetch(api,{
     headers:{
       Accept:'application/vnd.github+json'
@@ -223,8 +244,11 @@ async function loadNews(){
   const md=items.filter(x=>/\.md$/i.test(x.name));
 
   const results=await Promise.all(
+
     md.map(async f=>{
+
       try{
+
         const resp=await fetch(f.download_url);
 
         if(!resp.ok)
@@ -240,38 +264,66 @@ async function loadNews(){
           return null;
 
         const data=window.jsyaml.load(match[1])||{};
+
         const slug=f.name.replace(/\.md$/i,'');
+
         const body=raw.slice(match[0].length);
+
         const date=data.date?new Date(data.date):null;
 
         return {
+
           id:slug,
+
           h:String(data.title||'Başlıksız Haber'),
+
           s:String(data.spot||''),
+
           category:String(data.category||''),
+
           section:String(
             data.section||
             data.content_type||
             data.type||
             ''
           ),
+
           t:catType(data.category),
+
           img:safeUrl(data.image),
+
+          // VİDEO BİLGİLERİ
+
+          video:safeUrl(data.video),
+
+          youtube:String(data.youtube||''),
+
+          // FOTOĞRAF GALERİSİ
+
           imgs:Array.isArray(data.gallery)
             ?data.gallery.map(safeUrl).filter(Boolean)
             :[],
+
           text:body,
+
           date:date&&!isNaN(date)
             ?date.toISOString()
             :String(data.date||''),
+
           author:String(data.author||'')
+
         };
 
       }catch(e){
+
         console.warn(f.name,e);
+
         return null;
+
       }
+
     })
+
   );
 
   return results
@@ -280,10 +332,14 @@ async function loadNews(){
       (a,b)=>
         new Date(b.date||0)-new Date(a.date||0)
     );
+
 }
 
+
 // HABER KARTLARI
+
 function card(n,hero){
+
   const link='f_haber_detay_sayfas.html?haber='+
     encodeURIComponent(n.id);
 
@@ -301,32 +357,47 @@ function card(n,hero){
       :''}
 
     <h3 class="ed">${esc(n.h)}</h3>
+
     <p>${esc(n.s)}</p>
+
     <span class="more">HABERİ OKU →</span>
+
   </a>`;
+
 }
+
 
 function error(msg){
+
   $('#app').innerHTML=
     `<p class="site-message">${esc(msg)}</p>`;
+
 }
 
+
 // ANA SAYFA VE HABER LİSTELERİ
+
 async function listing(page){
+
   $('#app').innerHTML=
     '<p class="site-message">Haberler yükleniyor...</p>';
 
   try{
+
     const all=await loadNews();
 
     if(!all.length){
+
       error('Henüz yayımlanmış haber bulunmuyor.');
+
       return;
+
     }
 
     let N=all;
 
     if(page!=='home'){
+
       const names={
         tv:['tv','tv haberi','televizyon'],
         gazete:['gazete','gazete haberi'],
@@ -335,67 +406,253 @@ async function listing(page){
       };
 
       N=all.filter(n=>
-        names[page].includes(
+        (names[page]||[]).includes(
           n.section.toLocaleLowerCase('tr-TR')
         )
       );
 
       if(!N.length){
+
         error(
           'Bu bölümde henüz haber bulunmuyor. Decap CMS’te haberin Yayın Türü alanını seçerek burada gösterebilirsin.'
         );
+
         return;
+
       }
+
     }
 
     if(page==='home'){
+
       let heroIndex=0;
 
       const draw=()=>{
+
         $('#app').innerHTML=
+
           card(N[heroIndex],true)+
+
           (N.length>1
             ?'<h2 class="slider-title ed">Tüm Haberler</h2>'+
               '<div class="news-slider">'+
+
               N.map((n,i)=>
                 i!==heroIndex?card(n,false):''
               ).join('')+
+
               '</div>'
             :'');
+
       };
 
       draw();
 
       if(N.length>1){
+
         setInterval(()=>{
+
           if(document.querySelector('.news-slider:hover'))
             return;
 
           heroIndex=(heroIndex+1)%N.length;
+
           draw();
+
         },7000);
+
       }
 
     }else{
+
       $('#app').innerHTML=
+
         '<div class="grid">'+
+
         N.map((n,i)=>card(n,i===0)).join('')+
+
         '</div>';
+
     }
 
   }catch(e){
+
     console.error(e);
 
     error(
       'Haberler şu anda yüklenemiyor. İnternet bağlantısını, GitHub deposunun herkese açık olduğunu ve haberler klasörünü kontrol edin.'
     );
+
   }
+
 }
 
+
+// YOUTUBE VİDEO BAĞLANTISINI TANIMA
+
+function youtubeId(value){
+
+  const raw=String(value||'').trim();
+
+  if(!raw)return '';
+
+  if(/^[a-zA-Z0-9_-]{11}$/.test(raw))
+    return raw;
+
+  try{
+
+    const url=new URL(raw);
+
+    if(!['http:','https:'].includes(url.protocol))
+      return '';
+
+    const host=url.hostname.toLowerCase();
+
+    let id='';
+
+    // YOUTUBE KISA BAĞLANTISI
+
+    if(host==='youtu.be'){
+
+      id=url.pathname.split('/').filter(Boolean)[0]||'';
+
+    }
+
+    // NORMAL YOUTUBE BAĞLANTILARI
+
+    else if([
+      'youtube.com',
+      'www.youtube.com',
+      'm.youtube.com',
+      'youtube-nocookie.com',
+      'www.youtube-nocookie.com'
+    ].includes(host)){
+
+      if(url.pathname==='/watch'){
+
+        id=url.searchParams.get('v')||'';
+
+      }else{
+
+        const parts=url.pathname.split('/').filter(Boolean);
+
+        if(['embed','shorts','live','v'].includes(parts[0])){
+
+          id=parts[1]||'';
+
+        }
+
+      }
+
+    }
+
+    return /^[a-zA-Z0-9_-]{11}$/.test(id)
+      ?id
+      :'';
+
+  }catch(e){
+
+    return '';
+
+  }
+
+}
+
+
+// VİDEO OYNATICI OLUŞTURMA
+
+function renderVideo(n){
+
+  const id=youtubeId(n.youtube);
+
+  // YOUTUBE VİDEO OYNATICI
+
+  if(id){
+
+    return `
+
+      <div class="news-video">
+
+        <iframe
+
+          src="https://www.youtube-nocookie.com/embed/${id}"
+
+          title="Haber videosu"
+
+          loading="lazy"
+
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+
+          referrerpolicy="strict-origin-when-cross-origin"
+
+          allowfullscreen>
+
+        </iframe>
+
+      </div>
+
+    `;
+
+  }
+
+  // DOĞRUDAN MP4 VİDEO OYNATICI
+
+  const video=safeUrl(n.video);
+
+  if(video){
+
+    try{
+
+      const url=new URL(video,location.href);
+
+      if(!['http:','https:'].includes(url.protocol))
+        return '';
+
+      return `
+
+        <div class="news-video">
+
+          <video
+
+            controls
+
+            playsinline
+
+            preload="metadata"
+
+            src="${esc(url.href)}">
+
+            Tarayıcınız video oynatmayı desteklemiyor.
+
+          </video>
+
+        </div>
+
+      `;
+
+    }catch(e){
+
+      console.warn('Video bağlantısı geçersiz.',e);
+
+    }
+
+  }
+
+  // VİDEO YOKSA OYNATICI GÖSTERME
+
+  return '';
+
+}
+
+
 // HABER DETAY SAYFASI
+
 function renderDetail(n){
+
   const art=$('#article-container');
+
   const title=n.h||n.title||'Haber';
+
   const body=String(n.text||n.body||'');
 
   art.style.setProperty(
@@ -415,105 +672,163 @@ function renderDetail(n){
 
   const images=Array.isArray(n.imgs)?n.imgs:[];
 
+  const videoHTML=renderVideo(n);
+
   art.innerHTML=`
+
     <span class="tag">
+
       ${esc(n.category||TYPES[n.t]?.[0]||'Haber')}
+
     </span>
 
     ${n.date
       ?`<div class="meta">
+
           ${esc(new Date(n.date).toLocaleDateString('tr-TR'))}
+
         </div>`
       :''}
 
     <h1 class="ed">${esc(title)}</h1>
 
     <p class="lead">
+
       ${esc(n.s||n.spot||'')}
+
     </p>
+
+    ${videoHTML}
 
     ${n.img
       ?`<figure>
+
           <img class="art-img"
+
             src="${esc(safeUrl(n.img))}"
+
             alt="${esc(title)}">
+
         </figure>`
       :''}
 
     <div class="article-body">
+
       ${safe}
+
     </div>
 
     ${images.length
       ?`<div class="gh">FOTOĞRAF GALERİSİ</div>
+
         <div class="gallery">
+
           ${images.map((im,i)=>
+
             `<img src="${esc(safeUrl(im))}"
+
               alt="Haber fotoğrafı ${i+1}"
+
               loading="lazy">`
+
           ).join('')}
+
         </div>`
       :''}
+
   `;
+
+
+  // FOTOĞRAF BÜYÜTME SİSTEMİ
 
   const lb=$('#lb');
 
   if(lb){
+
     const img=lb.querySelector('img');
+
     let idx=0;
+
     let imgs=[];
 
     function show(i){
+
       imgs=[...art.querySelectorAll('img')];
 
       if(!imgs.length)return;
 
       idx=(i+imgs.length)%imgs.length;
+
       img.src=imgs[idx].src;
+
       lb.classList.add('open');
+
     }
 
     art.addEventListener('click',e=>{
+
       if(e.target.matches('img')){
+
         show(
+
           [...art.querySelectorAll('img')]
             .indexOf(e.target)
+
         );
+
       }
+
     });
 
     lb.querySelector('.x').onclick=()=>
+
       lb.classList.remove('open');
 
     lb.querySelector('.pv').onclick=()=>
+
       show(idx-1);
 
     lb.querySelector('.nx').onclick=()=>
+
       show(idx+1);
 
     lb.addEventListener('click',e=>{
+
       if(e.target===lb)
+
         lb.classList.remove('open');
+
     });
 
     document.addEventListener('keydown',e=>{
+
       if(!lb.classList.contains('open'))
+
         return;
 
       if(e.key==='Escape')
+
         lb.classList.remove('open');
 
       if(e.key==='ArrowLeft')
+
         show(idx-1);
 
       if(e.key==='ArrowRight')
+
         show(idx+1);
+
     });
+
   }
+
 }
 
+
 // HABERİ AÇMA
+
 async function detail(){
+
   const art=$('#article-container');
 
   art.innerHTML='<p>Haber yükleniyor...</p>';
@@ -522,51 +837,80 @@ async function detail(){
     .get('haber');
 
   if(slug){
+
     try{
+
       const all=await loadNews();
+
       const n=all.find(n=>n.id===slug);
 
       if(n){
+
         renderDetail(n);
+
         return;
+
       }
 
     }catch(e){
+
       console.warn(e);
+
     }
+
   }
 
   let saved=null;
 
   try{
+
     saved=JSON.parse(
+
       localStorage.getItem('fh-current-news')||'null'
+
     );
+
   }catch(e){}
 
-  if(saved){
+  if(saved&&(!slug||saved.id===slug)){
+
     renderDetail(saved);
+
     return;
+
   }
 
   art.innerHTML=`
+
     <h1 class="ed">Haber bulunamadı</h1>
+
     <p>Haberin bağlantısı geçersiz veya içerik henüz yayımlanmamış olabilir.</p>
+
     <a href="index.html" class="back">
+
       ANA SAYFAYA DÖN
+
     </a>
+
   `;
+
 }
 
-// BAŞLAT
+
+// SİTEYİ BAŞLAT
+
 setup();
 
 const page=document.body.dataset.page||'home';
 
 if(page==='detail'){
+
   detail();
+
 }else{
+
   listing(page);
+
 }
 
 })();
