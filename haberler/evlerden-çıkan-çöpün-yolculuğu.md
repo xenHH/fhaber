@@ -3,6 +3,7 @@ title: Evlerden Çıkan Çöpün Yolculuğu
 spot: Evsel Atıklar Nereye Gidiyor? | Kaynağında Ayrıştırma ve Enerji Dönüşümü
 section: tv
 category: organic
+image: /fhaber/images/uploads/whatsapp-image-2026-11-26-at-01.30.55.jpeg
 youtube: https://youtu.be/jii2c2s9piQ
 ---
 Çevre kirliliği ile mücadele gerçekten evlerimizde mi başlıyor? Günlük hayatta ortaya çıkan evsel atıkları ne kadar doğru ayrıştırıyoruz? Peki, çöpe attığımız atıkların sonrasında nasıl bir süreçten geçtiğini ve enerjiye nasıl dönüştüğünü biliyor muydunuz?
