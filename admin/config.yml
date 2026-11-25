@@ -12,7 +12,6 @@ collections:
     create: true
     slug: "{{slug}}"
 
-
     fields:
       - label: "Haber Başlığı"
         name: "title"
@@ -50,7 +49,7 @@ collections:
         widget: "image"
         required: false
 
-      - label: "Fotoğraf Altyazısı"
+      - label: "Kapak Fotoğrafı Altyazısı"
         name: "image_caption"
         widget: "string"
         required: false
@@ -84,10 +83,11 @@ collections:
         widget: "string"
         required: false
 
-      - label: "Yayın Tarihi"
-        name: "date"
-        widget: "datetime"
-
       - label: "Haber Metni"
         name: "body"
         widget: "markdown"
+        editor_components:
+          - image
+          - code-block
+          - captioned-image
+        hint: "Metin içerisinde açıklamalı fotoğraf kullanmak için Altyazılı Fotoğraf seçeneğini seçin."
