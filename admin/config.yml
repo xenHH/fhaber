@@ -12,6 +12,7 @@ collections:
     create: true
     slug: "{{slug}}"
 
+
     fields:
       - label: "Haber Başlığı"
         name: "title"
