@@ -1,4 +1,3 @@
-
 backend:
   name: turbo-github
   turbo_site_id: a8069704-9018-4134-bfd2-5f163d46735d
@@ -43,6 +42,7 @@ collections:
           - {label: "Evsel Atıklar", value: "organic"}
           - {label: "Tehlikeli Atıklar", value: "hazard"}
           - {label: "Tıbbi Atıklar", value: "medical"}
+          - {label: "Sıfır Atık", value: "zero_waste"}
 
       - label: "Kapak Fotoğrafı"
         name: "image"
