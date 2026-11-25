@@ -914,7 +914,43 @@ function renderDetail(n){
 
 
   // FOTOĞRAF BÜYÜTME SİSTEMİ
+  // NORMAL FOTOĞRAFLARA OTOMATİK ALTYAZI EKLEME
 
+  art.querySelectorAll('.article-body img').forEach(img=>{
+
+    const caption=(img.getAttribute('alt')||'').trim();
+
+    if(!caption)return;
+
+    if(img.closest('figure'))return;
+
+    const figure=document.createElement('figure');
+
+    figure.className='inline-photo';
+
+    const figcaption=document.createElement('figcaption');
+
+    figcaption.className='photo-caption';
+
+    figcaption.textContent=caption;
+
+    const parent=img.parentElement;
+
+    if(parent.tagName==='P'&&parent.childNodes.length===1){
+
+      parent.replaceWith(figure);
+
+    }else{
+
+      img.before(figure);
+
+    }
+
+    figure.appendChild(img);
+
+    figure.appendChild(figcaption);
+
+  });
   const lb=$('#lb');
 
   if(lb){
