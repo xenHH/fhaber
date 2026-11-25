@@ -1,4 +1,3 @@
-
 (()=>{
 'use strict';
 
@@ -11,7 +10,8 @@ const TYPES={
   metal:['Sanayi ve Endüstriyel Atıklar','--metal'],
   organic:['Evsel Atıklar','--organic'],
   hazard:['Tehlikeli Atıklar','--hazard'],
-  medical:['Tıbbi Atıklar','--medical']
+  medical:['Tıbbi Atıklar','--medical'],
+  zero_waste:['Sıfır Atık','--zero-waste']
 };
 
 const $=s=>document.querySelector(s);
@@ -53,6 +53,9 @@ const catType=c=>{
   const s=String(c||'')
     .toLocaleLowerCase('tr-TR')
     .trim();
+
+  if(s==='zero_waste'||/sıfır atık/.test(s))
+    return 'zero_waste';
 
   if(s==='paper'||/inşaat|yıkıntı/.test(s))
     return 'paper';
@@ -107,6 +110,7 @@ function bin(c,k){
     <circle cx="18" cy="84" r="4.5" fill="#111"/>
     <circle cx="46" cy="84" r="4.5" fill="#111"/>
   </svg>`;
+
 }
 
 
@@ -139,7 +143,8 @@ function setup(){
     '--metal':'#8a949c',
     '--organic':'#8a5a2b',
     '--hazard':'#d9262c',
-    '--medical':'#e11d74'
+    '--medical':'#e11d74',
+    '--zero-waste':'#009688'
   };
 
   const LBL={
@@ -152,7 +157,8 @@ function setup(){
     '--metal':'Sanayi ve Endüstriyel',
     '--organic':'Evsel',
     '--hazard':'Tehlikeli',
-    '--medical':'Tıbbi'
+    '--medical':'Tıbbi',
+    '--zero-waste':'Sıfır Atık'
   };
 
   let cur={...DEF};
@@ -442,7 +448,7 @@ async function listing(page){
           'roportaj'
         ],
 
-        // YENİ FOTO-RÖPORTAJ BÖLÜMÜ
+        // FOTO-RÖPORTAJ BÖLÜMÜ
 
         foto_roportaj:[
           'foto_roportaj',
