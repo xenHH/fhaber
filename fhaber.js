@@ -288,7 +288,38 @@ async function loadNews(){
 
         const body=raw.slice(match[0].length);
 
-        const date=data.date?new Date(data.date):null;
+
+        // OTOMATİK HABER SIRALAMASI
+        // Tarih okuyuculara gösterilmez.
+        // Yeni haberlerde GitHub değişiklik zamanı kullanılır.
+
+        let orderTime=Date.parse(data.date||'')||0;
+
+        if(!orderTime){
+
+          try{
+
+            const history=await fetch(
+              'https://api.github.com/repos/xenHH/fhaber/commits?sha=main&per_page=1&path='+
+              encodeURIComponent(
+                f.path||('haberler/'+f.name)
+              )
+            );
+
+            if(history.ok){
+
+              const commits=await history.json();
+
+              orderTime=Date.parse(
+                commits[0]?.commit?.committer?.date||''
+              )||0;
+
+            }
+
+          }catch(_){}
+
+        }
+
 
         const categoryType=catType(data.category);
 
@@ -300,9 +331,11 @@ async function loadNews(){
 
           s:String(data.spot||''),
 
+
           // TÜRKÇE KATEGORİ ADI
 
           category:getCategoryName(data.category),
+
 
           // ORİJİNAL CMS KATEGORİ KODU
 
@@ -317,9 +350,11 @@ async function loadNews(){
 
           t:categoryType,
 
+
           // KAPAK FOTOĞRAFI
 
           img:safeUrl(data.image),
+
 
           // KAPAK FOTOĞRAFI ALTYAZISI
 
@@ -327,11 +362,13 @@ async function loadNews(){
             data.image_caption||''
           ).trim(),
 
+
           // VİDEO BİLGİLERİ
 
           video:safeUrl(data.video),
 
           youtube:String(data.youtube||''),
+
 
           // ESKİ VE ALTYAZILI FOTOĞRAF GALERİLERİ
 
@@ -352,11 +389,15 @@ async function loadNews(){
 
           })).filter(im=>im.image),
 
+
+          // HABER METNİ
+
           text:body,
 
-          date:date&&!isNaN(date)
-            ?date.toISOString()
-            :String(data.date||''),
+
+          // ARKA PLANDA HABER SIRALAMASI
+
+          orderTime,
 
           author:String(data.author||'')
 
@@ -378,7 +419,8 @@ async function loadNews(){
     .filter(Boolean)
     .sort(
       (a,b)=>
-        new Date(b.date||0)-new Date(a.date||0)
+        (b.orderTime-a.orderTime)||
+        a.id.localeCompare(b.id,'tr')
     );
 
 }
@@ -448,6 +490,7 @@ async function listing(page){
 
     if(page!=='home'){
 
+
       // YAYIN TÜRLERİ
 
       const names={
@@ -467,6 +510,7 @@ async function listing(page){
           'röportaj',
           'roportaj'
         ],
+
 
         // FOTO-RÖPORTAJ BÖLÜMÜ
 
@@ -505,6 +549,9 @@ async function listing(page){
       }
 
     }
+
+
+    // OTOMATİK MANŞET SİSTEMİ
 
     if(page==='home'){
 
@@ -593,6 +640,7 @@ function youtubeId(value){
 
     let id='';
 
+
     // YOUTUBE KISA BAĞLANTISI
 
     if(host==='youtu.be'){
@@ -600,6 +648,7 @@ function youtubeId(value){
       id=url.pathname.split('/').filter(Boolean)[0]||'';
 
     }
+
 
     // NORMAL YOUTUBE BAĞLANTILARI
 
@@ -648,6 +697,7 @@ function renderVideo(n){
 
   const id=youtubeId(n.youtube);
 
+
   // YOUTUBE VİDEO OYNATICI
 
   if(id){
@@ -677,6 +727,7 @@ function renderVideo(n){
     `;
 
   }
+
 
   // DOĞRUDAN MP4 VİDEO OYNATICI
 
@@ -721,6 +772,7 @@ function renderVideo(n){
 
   }
 
+
   // VİDEO YOKSA OYNATICI GÖSTERME
 
   return '';
@@ -738,6 +790,7 @@ function renderDetail(n){
 
   const body=String(n.text||n.body||'');
 
+
   // KATEGORİ KODUNU TÜRKÇE İSME DÖNÜŞTÜR
 
   const type=TYPES[n.t]
@@ -745,6 +798,7 @@ function renderDetail(n){
     :catType(n.categoryCode||n.category);
 
   const categoryLabel=TYPES[type][0];
+
 
   // KATEGORİ RENGİ
 
@@ -754,6 +808,9 @@ function renderDetail(n){
   );
 
   document.title=title+' | F Haber';
+
+
+  // HABER METNİ VE ALTYAZILI FOTOĞRAFLAR
 
   const parsed=window.marked
     ?window.marked.parse(body)
@@ -767,6 +824,10 @@ function renderDetail(n){
 
   const videoHTML=renderVideo(n);
 
+
+  // HABER DETAY TASARIMI
+  // YAYIN TARİHİ GÖSTERİLMEZ
+
   art.innerHTML=`
 
     <span class="tag">
@@ -775,21 +836,16 @@ function renderDetail(n){
 
     </span>
 
-    ${n.date
-      ?`<div class="meta">
-
-          ${esc(new Date(n.date).toLocaleDateString('tr-TR'))}
-
-        </div>`
-      :''}
 
     <h1 class="ed">${esc(title)}</h1>
+
 
     <p class="lead">
 
       ${esc(n.s||n.spot||'')}
 
     </p>
+
 
     ${videoHTML}
 
