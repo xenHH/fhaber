@@ -112,3 +112,5 @@ Atık oluşumunun azaltılmasının önemini vurgulayan Soyseven şöyle konuşt
 "Tıbbi atık yönetiminde sürdürülebilirliğin temel yaklaşımlarından biri 3R ilkesidir: Azalt, Yeniden Kullan ve Geri Dönüştür. Bu yaklaşımda öncelikli hedef, atığı oluştuktan sonra bertaraf etmek değil, kaynağında oluşumunu en aza indirmektir."
 
 Soyseven, atıkların kaynağında doğru ayrıştırılması, uygun koşullarda depolanması ve gerekli bertaraf yöntemlerinin eksiksiz uygulanmasının insan sağlığı ve çevrenin korunması açısından önemli olduğunu belirtti. Çevre dostu analiz yöntemlerinin geliştirilmesi ve kimyasal tüketiminin azaltılmasıyla laboratuvarlarda daha sürdürülebilir bir atık yönetiminin mümkün olabileceğini ifade etti.
+
+Hazırlayan : Tanju GÜHER
