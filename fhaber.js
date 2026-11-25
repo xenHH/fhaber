@@ -54,9 +54,6 @@ const catType=c=>{
     .toLocaleLowerCase('tr-TR')
     .trim();
 
-  if(s==='zero_waste'||/sıfır atık/.test(s))
-    return 'zero_waste';
-
   if(s==='paper'||/inşaat|yıkıntı/.test(s))
     return 'paper';
 
@@ -77,6 +74,9 @@ const catType=c=>{
 
   if(s==='medical'||/tıbbi|sağlık/.test(s))
     return 'medical';
+
+  if(s==='zero_waste'||/sıfır atık|zero waste|zero-waste/.test(s))
+    return 'zero_waste';
 
   return 'organic';
 };
@@ -110,7 +110,6 @@ function bin(c,k){
     <circle cx="18" cy="84" r="4.5" fill="#111"/>
     <circle cx="46" cy="84" r="4.5" fill="#111"/>
   </svg>`;
-
 }
 
 
@@ -318,7 +317,15 @@ async function loadNews(){
 
           t:categoryType,
 
+          // KAPAK FOTOĞRAFI
+
           img:safeUrl(data.image),
+
+          // KAPAK FOTOĞRAFI ALTYAZISI
+
+          imageCaption:String(
+            data.image_caption||''
+          ).trim(),
 
           // VİDEO BİLGİLERİ
 
@@ -326,11 +333,24 @@ async function loadNews(){
 
           youtube:String(data.youtube||''),
 
-          // FOTOĞRAF GALERİSİ
+          // ESKİ VE ALTYAZILI FOTOĞRAF GALERİLERİ
 
-          imgs:Array.isArray(data.gallery)
-            ?data.gallery.map(safeUrl).filter(Boolean)
-            :[],
+          imgs:[
+            ...(Array.isArray(data.gallery)
+              ?data.gallery:[]),
+
+            ...(Array.isArray(data.captioned_gallery)
+              ?data.captioned_gallery:[])
+
+          ].map(im=>({
+
+            image:safeUrl(im),
+
+            caption:String(
+              im?.caption||''
+            ).trim()
+
+          })).filter(im=>im.image),
 
           text:body,
 
@@ -773,8 +793,9 @@ function renderDetail(n){
 
     ${videoHTML}
 
+
     ${n.img
-      ?`<figure>
+      ?`<figure class="news-figure">
 
           <img class="art-img"
 
@@ -782,8 +803,17 @@ function renderDetail(n){
 
             alt="${esc(title)}">
 
+          ${n.imageCaption
+            ?`<figcaption class="photo-caption">
+
+                ${esc(n.imageCaption)}
+
+              </figcaption>`
+            :''}
+
         </figure>`
       :''}
+
 
     <div class="article-body">
 
@@ -791,20 +821,35 @@ function renderDetail(n){
 
     </div>
 
+
     ${images.length
       ?`<div class="gh">FOTOĞRAF GALERİSİ</div>
 
         <div class="gallery">
 
-          ${images.map((im,i)=>
+          ${images.map((im,i)=>`
 
-            `<img src="${esc(safeUrl(im))}"
+            <figure class="gallery-figure">
 
-              alt="Haber fotoğrafı ${i+1}"
+              <img
 
-              loading="lazy">`
+                src="${esc(safeUrl(im))}"
 
-          ).join('')}
+                alt="Haber fotoğrafı ${i+1}"
+
+                loading="lazy">
+
+              ${im?.caption
+                ?`<figcaption class="photo-caption">
+
+                    ${esc(im.caption)}
+
+                  </figcaption>`
+                :''}
+
+            </figure>
+
+          `).join('')}
 
         </div>`
       :''}
