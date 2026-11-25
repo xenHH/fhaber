@@ -896,3 +896,34 @@ footer ul {
 @media (max-width: 640px) {
   .art .article-body .inline-photo { margin: 16px 0; }
 }
+/* NORMAL FOTOĞRAFLARIN ALTYAZILARI */
+
+.art .article-body .inline-photo {
+  margin: 20px 0 25px;
+  width: 100%;
+}
+
+.article-body .inline-photo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.article-body .inline-photo .photo-caption {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  color: #68756f;
+  text-align: left;
+  line-height: 1.5;
+  padding: 6px 0;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .article-body .inline-photo .photo-caption {
+    font-size: 11px;
+  }
+}
