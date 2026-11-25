@@ -16,7 +16,7 @@ date: 2026-11-07T15:43:00.000+03:00
 
 Eskişehir'de 13yıldır çibörek ustalığı yapan Kübra Köken, çibörek yapımında unlu hamurun kızgın yağa atılması nedeniyle yağın belirli bir porsiyon kullanımın ardından koyulaşıp yanmaya başladığını belirtiyor. Lezzet ve hizmet kalitesinden ödün vermemek adına yağı henüz yanma aşamasına gelmeden değiştirdiklerini vurgulayan Köken, işletmelerdeki atık yağ yönetimini şu sözlerle anlatıyor:
 
-![Kübra Köken](/fhaber/images/uploads/img_2282.jpg "Kübra Köken")
+![ Çibörek Ustası Kübra Köken](/fhaber/images/uploads/img_2282.jpg "Kübra Köken")
 
 "Hafta içi günde ortalama 2 litre, hafta sonu ise 5 litreye kadar atık yağ elde ediyoruz. Bu yağları anlaşmalı olduğumuz lisanslı toplama firmasının bize sağladığı 50litrelik özel bidonlarda biriktiriyoruz. Bidonlar dolduğunda firmayı arıyoruz ve gelip litresi yaklaşık 26 TL ile 32 TL arasında değişen ücretlerle teslim alıyorlar."
 
@@ -28,11 +28,11 @@ Eskişehir'de 13yıldır çibörek ustalığı yapan Kübra Köken, çibörek ya
 
 Çibörekçilerden ve kentteki kafe ile restoranlardan toplanan bidonlar, Eskişehir'deki lisanslı ara toplama merkezine ulaştırılıyor. Tesis çalışanı Yasin Gransit, işletmelerden alınan atık yağların İzmir'deki ana fabrikaya sevk edilmeden önce geçtiği teknik aşamaları detaylandırıyor:
 
-![Geçilen Teknik Aşamaların Anlatımı](/fhaber/images/uploads/img_2299.jpg "anlatım")
+![Tesis çalışanı Yasin Gransit](/fhaber/images/uploads/img_2299.jpg "anlatım")
 
 Katı Atık Ayrıştırma (Süzme): İşletmelerden getirilen atık yağlar özel tesiste makinelere dökülerek süzme işleminden geçiriliyor. Yağın içerisine karışmış olan un artıkları, patates parçaları, poşet veya diğer kirlilikler bu aşamada tamamen temizleniyor.
 
-![Ayrıştırma İşlemi](/fhaber/images/uploads/img_2286.jpg)
+![Tesis çalışanı Yasin Gransit ve Katı Atık Ayrıştırma Makineleri](/fhaber/images/uploads/img_2286.jpg)
 
 Isıl İşlem(Rezistanslı Eritme): Özellikle soğuk havalarda veya donma eğilimli yağlarda ,kazan altındaki rezistanslı ısıtıcılar devreye sokuluyor. Katılaşmış yağlar ısıtılarak homojen ve akışkan bir sıvı hale getiriliyor.
 
@@ -44,7 +44,7 @@ Eskişehir'deki tesiste bulunan büyük yağ haznesi tam doluluğa ulaştığın
 
 İzmir'deki geri dönüşüm rafinerisine taşınan bitkisel atık yağlar, kimyasal işlemlerden geçirilerek yüksek kalitede biyodizele dönüştürülüyor. Elde edilen bu çevreci yakıt, ulusal enerji politikaları ve çevre mevzuatları gereği akaryakıt dağıtım şirketlerine satılıyor.
 
-![Depolama Tankları](/fhaber/images/uploads/img_2290.jpg)
+![Atık Yağın Toplandığı Ana Depolama Tankı](/fhaber/images/uploads/img_2290.jpg)
 
 Akaryakıt firmaları, Türkiye piyasasına sundukları motorinin (mazot) içerisine binde 5 oranında biyodizel harmanlamakla yükümlü. Böylece Eskişehir'de çibörek tavasında ömrünü tamamlayan bir damla yağ, doğru toplama ve dönüştürme zinciri sayesinde hem kentin akarsularını ve altyapısını koruyor hem de araçlarda kullanılan yakıtın bir parçası haline gelerek ekonomiye geri kazandırılıyor.
 
