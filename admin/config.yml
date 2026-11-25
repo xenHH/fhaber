@@ -28,10 +28,10 @@ collections:
           - {label: "Gazete Haberi", value: "gazete"}
           - {label: "TV Haberi", value: "tv"}
           - {label: "Röportaj", value: "roportaj"}
-          - {label: "Foto-Röportaj", value: "foto_roportaj"}
+          - {label: "Foto Röportaj", value: "foto_roportaj"}
           - {label: "Podcast", value: "podcast"}
 
-      - label: "Kategori"
+      - label: "Atık Kategorisi"
         name: "category"
         widget: "select"
         options:
@@ -44,10 +44,16 @@ collections:
           - {label: "Tıbbi Atıklar", value: "medical"}
           - {label: "Sıfır Atık", value: "zero_waste"}
 
-      - label: "Kapak Fotoğrafı"
+      - label: "Haber Fotoğrafı"
         name: "image"
         widget: "image"
         required: false
+
+      - label: "Fotoğraf Altyazısı"
+        name: "image_caption"
+        widget: "string"
+        required: false
+        hint: "Kapak fotoğrafının altında gösterilecek açıklamayı yazın."
 
       - label: "Fotoğraf Galerisi"
         name: "gallery"
@@ -58,11 +64,28 @@ collections:
           name: "image"
           widget: "image"
 
+      - label: "Altyazılı Fotoğraf Galerisi"
+        name: "captioned_gallery"
+        widget: "list"
+        required: false
+        fields:
+          - label: "Fotoğraf"
+            name: "image"
+            widget: "image"
+
+          - label: "Fotoğraf Altyazısı"
+            name: "caption"
+            widget: "string"
+            required: false
+
       - label: "YouTube Video Bağlantısı"
         name: "youtube"
         widget: "string"
         required: false
-        hint: "YouTube video bağlantısını buraya yapıştırınız."
+
+      - label: "Yayın Tarihi"
+        name: "date"
+        widget: "datetime"
 
       - label: "Haber Metni"
         name: "body"
