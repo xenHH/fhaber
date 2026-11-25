@@ -490,6 +490,31 @@ main {
 }
 
 
+/* FOTOĞRAF ALTYAZILARI */
+
+.art .news-figure {
+  margin: 20px 0 28px;
+}
+
+.news-figure .art-img {
+  margin-bottom: 0;
+  cursor: zoom-in;
+}
+
+.photo-caption {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  color: #68756f;
+  line-height: 1.5;
+  padding: 7px 0;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+
 /* FOTOĞRAF GALERİSİ */
 
 .gallery {
@@ -504,6 +529,24 @@ main {
   aspect-ratio: 4/3;
   object-fit: cover;
   cursor: zoom-in;
+}
+
+.art .gallery-figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.art .gallery-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+}
+
+.gallery-figure .photo-caption {
+  font-size: 11px;
 }
 
 
@@ -791,6 +834,27 @@ footer ul {
     height: auto;
     max-height: 280px;
     margin-bottom: 15px;
+  }
+
+
+  /* MOBİL FOTOĞRAF ALTYAZILARI */
+
+  .art .news-figure {
+    margin: 15px 0 20px;
+  }
+
+  .news-figure .art-img {
+    margin-bottom: 0;
+  }
+
+  .photo-caption {
+    font-size: 11px;
+    padding: 5px 0;
+    line-height: 1.5;
+  }
+
+  .gallery-figure .photo-caption {
+    font-size: 10px;
   }
 
 
