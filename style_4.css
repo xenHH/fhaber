@@ -880,3 +880,19 @@ footer ul {
   }
 
 }
+/* HABER METNİNDE ALTYAZILI FOTOĞRAFLAR */
+.art .article-body .inline-photo {
+  margin: 24px 0;
+  width: 100%;
+}
+.article-body .inline-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  cursor: zoom-in;
+}
+.photo-caption:empty { display: none; }
+@media (max-width: 640px) {
+  .art .article-body .inline-photo { margin: 16px 0; }
+}
