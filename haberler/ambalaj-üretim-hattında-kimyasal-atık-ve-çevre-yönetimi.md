@@ -6,7 +6,7 @@ category: hazard
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
 youtube: https://youtu.be/x8Z1oGBMv1M
 ---
-Üretim Hatlarının Görünmeyen Yüzü: Ambalaj Sanayinde Kimyasal Atık Yönetimi
+**Üretim Hatlarının Görünmeyen Yüzü: Ambalaj Sanayinde Kimyasal Atık Yönetimi**
 
 Günlük hayatımızda elimize aldığımız her ambalajın arkasında nasıl bir üretim süreci var? Makineler durduğunda ve üretim hatları temizlendiğinde geriye ne kalıyor?
 
