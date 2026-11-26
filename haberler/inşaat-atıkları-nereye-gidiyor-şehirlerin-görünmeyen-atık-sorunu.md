@@ -6,7 +6,7 @@ category: paper
 image: /fhaber/images/uploads/tuğrul.jpeg
 youtube: https://youtu.be/vH_l5aGKuTI
 ---
-Moloz Değil Hammadde: İnşaat ve Yıkıntı Atıklarının Geri Dönüşümü
+**Moloz Değil Hammadde: İnşaat ve Yıkıntı Atıklarının Geri Dönüşümü**
 
 Deprem ve kentsel dönüşüm süreçleriyle yıkılan binaların ardından geriye kalan dev moloz yığınları gerçekten çöp mü, yoksa değerlendirilmeyi bekleyen değerli birer hammadde mi? Peki, bu atıkları geri dönüştürmek yerine toprağa gömerek nasıl bir ekonomik ve çevresel kayıp yaşıyoruz?
 
