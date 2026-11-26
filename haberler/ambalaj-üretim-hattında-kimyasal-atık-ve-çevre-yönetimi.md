@@ -4,6 +4,7 @@ spot: "Hazırlayan: İdil Nisa KETEN"
 section: podcast
 category: hazard
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
+youtube: https://youtu.be/x8Z1oGBMv1M
 ---
 Üretim Hatlarının Görünmeyen Yüzü: Ambalaj Sanayinde Kimyasal Atık Yönetimi
 
