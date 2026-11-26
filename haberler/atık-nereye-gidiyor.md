@@ -6,7 +6,7 @@ category: zero_waste
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
 youtube: https://youtu.be/2dDdgd5ILv4
 ---
-Atık Nereye Gidiyor? | Atık Yönetimi ve Sıfır Atık Sorumluluğu
+**Atık Nereye Gidiyor? | Atık Yönetimi ve Sıfır Atık Sorumluluğu**
 
 Bir atığı çöpe attığımızda gerçekten ondan kurtulmuş oluyor muyuz? Peki, atıklarımızın sonrasında nasıl bir süreçten geçtiğini ve bu süreçte kimlerin sorumluluk taşıdığını hiç düşündük mü?
 
