@@ -6,7 +6,7 @@ category: plastic
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
 youtube: https://youtu.be/3Jt7hR5Q8XI
 ---
-Kıyafetlerimizdeki Görünmez Tehlike: Mikroplastikler ve Tekstil Atık Suları
+**Kıyafetlerimizdeki Görünmez Tehlike: Mikroplastikler ve Tekstil Atık Suları**
 
 Evlerimizde her hafta çalıştırdığımız çamaşır makinelerinin doğaya görünmez bir yük bıraktığını biliyor muydunuz? Üzerimizdeki sentetik kıyafetler her yıkamada suya yüz binlerce plastik lif mi salıyor? Peki, giderden akıp giden bu mikroplastikler dönüp dolaşıp sofralarımıza kadar nasıl ulaşıyor?
 
