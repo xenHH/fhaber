@@ -6,7 +6,7 @@ category: organic
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
 youtube: https://youtu.be/VUXlxDlW_ug
 ---
-Çöpte Neler Dönüyor? Evsel Atık Muhabbeti | Atık Yönetimi ve Geri Dönüşüm
+**Çöpte Neler Dönüyor? Evsel Atık Muhabbeti | Atık Yönetimi ve Geri Dönüşüm**
 
 Her gün evimizden çıkardığımız çöp poşetinin nereye gittiğini hiç düşündünüz mü? Çöpe attığımız her şey gerçekten işe yaramaz mı? Peki, evde farkında olmadan yaptığımız alışkanlıklar çevreyi ve geleceğimizi nasıl etkiliyor?
 
