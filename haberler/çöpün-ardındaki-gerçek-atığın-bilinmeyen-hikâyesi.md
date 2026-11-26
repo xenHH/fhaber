@@ -6,7 +6,7 @@ category: zero_waste
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
 youtube: https://youtu.be/4f10DGg6ubY
 ---
-Çöpümüz Nereye Gidiyor? | Atık, Geri Dönüşüm ve Karbon Ayak İzi
+**Çöpümüz Nereye Gidiyor? | Atık, Geri Dönüşüm ve Karbon Ayak İzi**
 
 Her gün çöp poşetimizi kapının önüne bırakıyoruz. Peki, sonrasında neler oluyor? Çöpe attığımız her şey gerçekten işe yaramaz mı? Dünyada her yıl ne kadar atık üretiliyor ve tüketim alışkanlıklarımızın çevre üzerindeki etkileri neler?
 
