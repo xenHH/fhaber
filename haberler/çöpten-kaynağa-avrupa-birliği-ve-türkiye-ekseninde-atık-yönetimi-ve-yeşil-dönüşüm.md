@@ -7,8 +7,6 @@ category: zero_waste
 image: /fhaber/images/uploads/yazısız-“f”-haber-logosu.png
 youtube: https://youtu.be/1nnzWYaBLuI
 ---
-Çöpten Kaynağa: Avrupa Birliği ve Türkiye Ekseninde Atık Yönetimi ve Yeşil Dönüşüm
-
 Çöp kutusunun kapağını kapattığımızda hikâye gerçekten bitiyor mu? Günlük hayatımızda tükettiğimiz ambalajların ve atıkların arka planında nasıl bir yasal ve ekonomik düzen işliyor? Peki, kâğıt üzerindeki yeşil dönüşüm hedefleriyle sanayideki, belediyelerdeki ve nehir kıyılarındaki saha gerçeği birbiriyle ne kadar örtüşüyor?
 
 Bu podcast bölümünde Havva İrem Karaduman, Avrupa Birliği ve Türkiye ekseninde atık yönetimi politikalarını, yeşil dönüşüm sürecini ve Eskişehir özelindeki saha verilerini ele alıyor.
