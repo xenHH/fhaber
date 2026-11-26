@@ -1,6 +1,6 @@
 ---
 title: " Üretimin Görünmeyen Yüzü"
-spot: "Hazırlayan : Tanju Güher"
+spot: "Hazırlayan : Tanju GÜHER"
 section: tv
 category: metal
 image: /fhaber/images/uploads/tanju.jpeg
