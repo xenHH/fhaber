@@ -27,8 +27,6 @@ Konut dışı yerlerde bedellendirme, işletmelerin faaliyet türleri ve atık �
 
 2027 yılı tariferaporunda belirlenen toplama ve taşıma bedelleri aşağıdaki gibidir:
 
-
-
 ![](/fhaber/images/uploads/ekran-görüntüsü-2026-11-28-021744.png)
 
 Diğer ticari, sınai, zirai ve mesleki faaliyet gösteren iş yerlerinde tarifedeki 1-3 personel grubu ve sonraki her bir personel için öngörülen hesaplama kuralı uygulanmaktadır.
@@ -53,8 +51,6 @@ Kesin hesap Odunpazarı Belediyesi meclisinden geçtikten sonra bu hesabı yapab
 
 7.  Son olarak, 2026 ve 2027 yıllarına ait katı atık bedeli tarifelerini karşılaştırmalı olarak paylaşmanız mümkün müdür?
 
-  
-
 ![](/fhaber/images/uploads/ekran-görüntüsü-2026-11-28-021808.png)
 
-\
+Hazırlayan: Melih Ulaş ALTUNÇ
