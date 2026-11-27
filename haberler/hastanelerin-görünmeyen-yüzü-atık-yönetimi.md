@@ -47,3 +47,5 @@ Dünya Sağlık Örgütü verilerine baktığımızda, aslında sağlık kurulu�
 Bunu size bir serum şişesinin atık hikâyesiyle somutlaştırayım: Şişe ister cam ister plastik olsun, içinde sadece izotonik, yani bildiğimiz tuzlu su vardır. Eğer içine hiçbir ilaç karıştırılmadıysa o boş şişe doğrudan geri dönüştürülebilir atıktır. İçine ağrı kesici ya da ateş düşürücü gibi bir ilaç eklendiyse artık tehlikeli kontamine ambalaj sınıfına girer. Eğer hastanın kanıyla temas ettiyse tıbbi atık olur.
 
 Aynı kural enjektörler için de geçerlidir: İğne ucu her hâlükârda sarı kesici-delici kutusuna gider ama plastik gövde, kan veya kimyasal bulaşına maruz kalmadıysa geri dönüştürülebilir. Ne yazık ki sahadaki yoğun iş temposu veya “risk almayalım” yaklaşımı nedeniyle temiz serum şişeleri ve ambalajlar çoğu zaman doğrudan kırmızı tıbbi atık poşetine atılıyor. Oysa bu durum hem değerli ham maddeyi çöpe atıyor hem de hastanelerin bertaraf maliyetlerini ciddi oranda artırıyor. Tıbbi bulaş olmadığı sürece bu malzemeleri kaynağında ayırıp geri dönüşüme kazandırmak, sürdürülebilir sağlık sistemi için şart.
+
+Hazırlayan: Enes VAROL
