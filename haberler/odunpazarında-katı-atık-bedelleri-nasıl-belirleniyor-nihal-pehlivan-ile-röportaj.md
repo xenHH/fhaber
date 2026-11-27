@@ -43,7 +43,7 @@ Net sistem toplam maliyeti 434.844.964,42 ₺’dir.
 
 5. Katı atık bedeli kapsamında belediyenin 2025 yılında elde ettiği toplam tahakkuk ve tahsilat tutarı ne kadardır? Mümkünse 2026 yılı için şu ana kadar gerçekleşen rakamlarıda paylaşabilir misiniz? ( 7. Soru ile aynı)
 
-Temizlik İşleri Müdürlüğü tarafından net sistem maliyeti hesaplanır. Diğer kısımlarda ilgilibirim Gelirler Müdürlüğüdür.
+Temizlik İşleri Müdürlüğü tarafından net sistem maliyeti hesaplanır. Diğer kısımlarda ilgili birim Gelirler Müdürlüğüdür.
 
 6. Katı atık bedelinde de edilen gelir, atık yönetimi hizmetlerinin toplam maliyetinin ne kadarını karşılamaktadır? Aradaki fark belediye bütçesinden mi karşılanmaktadır?
 
