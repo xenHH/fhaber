@@ -4,7 +4,7 @@ spot: "Hazırlayan: Melih Ulaş ALTUNÇ"
 section: tv
 category: medical
 image: /fhaber/images/uploads/ulaş.jpeg
-youtube: https://youtu.be/3_v0pe-EL1s
+youtube: https://youtu.be/wod1CitJFcY
 ---
 Her gün binlerce kişinin başvurduğu sağlık kuruluşlarında muayene ve tedavi süreçlerinin ardından ortaya çıkan tıbbi atıklar nereye gidiyor? 
 
