@@ -8,8 +8,6 @@ spot: >
   bakımından da kritik önem taşıyor. Klinik sahadaki uygulamaları, denetim
   mekanizmalarını ve yoğun dönemlerde yaşanan zorlukları sorumlu hemşire Ayşe
   Dursun ile tecrübeli hemşire Hatice Kılıç anlattı.
-
-  Hastanelerde ve sağlık birimlerinde her gün yapılan tıbbi müdahaleler sonucunda enfekte atıklardan kesici-de
 section: gazete
 category: medical
 image: /fhaber/images/uploads/whatsapp-image-2026-11-26-at-01.09.19.jpeg
